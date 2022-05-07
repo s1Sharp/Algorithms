@@ -5,7 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <ctime>
-#include "../timer_util.h"
+#include "timer_util.h"
 
 
 template <typename T>
