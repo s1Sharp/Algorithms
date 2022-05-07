@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <random>
 #include <iomanip>
@@ -10,9 +11,7 @@
 #include <utility>
 #include <assert.h>
 #include "timer_util.h"
-
-
-
+#include "custom_assert.h"
 
 
 template <typename _T, typename SortCallFunc> // typename _Comparator>
@@ -32,9 +31,7 @@ double sort_vector(std::vector<_T> v, SortCallFunc sotring)
 template <typename _T>
 void rangom_vector(std::vector<_T>& v)
 {
-
     using std::setprecision;
-
 
     const _T FLOAT_MAX = static_cast<_T>(v.capacity() / 2);
     const _T FLOAT_MIN = -static_cast<_T>(v.capacity() / 2);
@@ -46,10 +43,11 @@ void rangom_vector(std::vector<_T>& v)
 
     generate(v.begin(), v.end(), 
             [&eng, &distr] () mutable  {
-                auto dist = distr(eng);
+                _T dist = static_cast<_T>( distr(eng) );
                 //std::cout << dist << std::endl;
                 return dist;
             });
 
     return;
 }
+
