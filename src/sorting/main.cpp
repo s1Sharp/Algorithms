@@ -5,11 +5,13 @@
 #include "selection_sort.hpp"
 #include "merge_sort.hpp"
 #include "bubble_sort.hpp"
+#include "heap_sort.hpp"
+#include "insertion_sort.hpp"
 
 #define STRINGIZE(x) #x
 
 #define TYPE float
-#define SIZE 10000
+#define SIZE 30000
 
 
 auto benchmark = [](auto v,  auto f, auto sort_type) -> double
@@ -63,13 +65,15 @@ int main()
         std::make_pair(merge_sort_std<TYPE>, STRINGIZE(merge_sort_std)),
         std::make_pair(bubble_sort<TYPE>, STRINGIZE(bubble_sort)),
         std::make_pair(bubble_sort_optimized<TYPE>, STRINGIZE(bubble_sort_optimized)),
+        std::make_pair(heap_sort<TYPE>, STRINGIZE(heap_sort)),
+        std::make_pair(insertion_sort<TYPE>, STRINGIZE(insertion_sort)),
         
     };
 
     auto sorting_result = benchmark_sorting_list(sorting_list);
     for (auto& s : sorting_result)
     {
-        std::cout<< "sorting algorithm: "<< s.first << " \t\telapsed time: " << s.second << " ms" << std::endl;
+        std::cout<< "sorting algorithm: "<< s.first << " \n\telapsed time:\t " << s.second << " ms" << std::endl;
     }
     
     return 0;
