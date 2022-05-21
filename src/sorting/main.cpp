@@ -7,12 +7,13 @@
 #include "bubble_sort.hpp"
 #include "heap_sort.hpp"
 #include "insertion_sort.hpp"
+#include "quick_sort.hpp"
 
 #define STRINGIZE(x) #x
 
 #define TYPE float
-#define SIZE 30000
 
+static const size_t SIZE = 10000LL;
 
 auto benchmark = [](auto v,  auto f, auto sort_type) -> double
 {
@@ -67,7 +68,7 @@ int main()
         std::make_pair(bubble_sort_optimized<TYPE>, STRINGIZE(bubble_sort_optimized)),
         std::make_pair(heap_sort<TYPE>, STRINGIZE(heap_sort)),
         std::make_pair(insertion_sort<TYPE>, STRINGIZE(insertion_sort)),
-        
+        std::make_pair(quick_sort<TYPE>, STRINGIZE(quick_sort)),
     };
 
     auto sorting_result = benchmark_sorting_list(sorting_list);
