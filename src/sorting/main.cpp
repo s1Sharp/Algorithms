@@ -1,7 +1,7 @@
 #include "sorting.h"
 
 // sorting functions
-// selectionSort
+#include "default_std_sort.hpp"
 #include "selection_sort.hpp"
 #include "merge_sort.hpp"
 #include "bubble_sort.hpp"
@@ -14,7 +14,7 @@
 
 #define TYPE float
 
-static const size_t SIZE = 10000LL;
+static const size_t SIZE = 30000LL;
 
 auto benchmark = [](auto v,  auto f, auto sort_type) -> double
 {
@@ -62,6 +62,7 @@ auto benchmark_sorting_list(_bechmark_type sorting_list) -> std::vector<std::pai
 int main()
 {
     std::vector sorting_list = {
+        std::make_pair(default_std_sort<TYPE>, STRINGIZE(default_std_sort)),
         std::make_pair(selection_sort<TYPE>, STRINGIZE(selection_sort)),
         std::make_pair(selection_sort_std<TYPE>, STRINGIZE(selection_sort_std)),
         std::make_pair(merge_sort_std<TYPE>, STRINGIZE(merge_sort_std)),
