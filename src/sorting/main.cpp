@@ -8,6 +8,7 @@
 #include "heap_sort.hpp"
 #include "insertion_sort.hpp"
 #include "quick_sort.hpp"
+#include "bucket_sort.hpp"
 
 #define STRINGIZE(x) #x
 
@@ -33,7 +34,7 @@ auto benchmark = [](auto v,  auto f, auto sort_type) -> double
 
     // asserting vector sorting
     bool is_sorted = std::is_sorted(std::begin(local_v), std::end(local_v));
-    m_Assert(is_sorted, "vector not sorted");
+    m_Assert(is_sorted, std::string("vector not sorted by ") + std::string(sort_type));
     is_sorted ? std::cout << "sorted by " << sort_type << std::endl : std::cout << "not sorted by " << sort_type << std::endl;
     double time =  timer.elapsedMilliseconds();
     return time;
@@ -69,6 +70,7 @@ int main()
         std::make_pair(heap_sort<TYPE>, STRINGIZE(heap_sort)),
         std::make_pair(insertion_sort<TYPE>, STRINGIZE(insertion_sort)),
         std::make_pair(quick_sort<TYPE>, STRINGIZE(quick_sort)),
+        std::make_pair(bucket_sort<TYPE>, STRINGIZE(bucket_sort)),
     };
 
     auto sorting_result = benchmark_sorting_list(sorting_list);
