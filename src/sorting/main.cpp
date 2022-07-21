@@ -9,6 +9,7 @@
 #include "insertion_sort.hpp"
 #include "quick_sort.hpp"
 #include "bucket_sort.hpp"
+#include "shell_sort.hpp"
 
 #define STRINGIZE(x) #x
 
@@ -72,6 +73,7 @@ int main()
         std::make_pair(insertion_sort<TYPE>, STRINGIZE(insertion_sort)),
         std::make_pair(quick_sort<TYPE>, STRINGIZE(quick_sort)),
         std::make_pair(bucket_sort<TYPE>, STRINGIZE(bucket_sort)),
+        std::make_pair(shell_sort<TYPE>, STRINGIZE(shell_sort)),
     };
 
     auto sorting_result = benchmark_sorting_list(sorting_list);
